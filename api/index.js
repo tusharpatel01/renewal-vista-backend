@@ -22,29 +22,16 @@ const corsOptions = {
     origin:['https://new-job-vista-lyart.vercel.app','http://localhost:5173'],
     credentials:true,
 }
-
+connectDB();
 app.use(cors(corsOptions));
-
-// const PORT = process.env.PORT || 3000;
-
-
-// api's
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-// app.use(express.static(path.join(dirname,"/frontend/dist")))
-// app.get('*',(_,res)=>{
-//     res.sendFile(path.resolve(dirname,"frontend","dist","index.html"))
-// })
-
 app.get('/',(req,res) => {
     res.status(200).json({message:"Welcome to JobVista API"}    
     )
 })
-// app.listen(PORT,()=>{
-//     connectDB();
-//     console.log(`Server running at port ${PORT}`);
-// })
+
 export default app;
